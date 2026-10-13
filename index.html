@@ -487,7 +487,7 @@
           </sc-if>
           <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;max-width:280px;">
-              <div style="font-size:13px;line-height:1.45;color:#4A473F;">Socio <strong>ANV</strong> o <strong>ANFM</strong>? Inserisci il tuo codice sconto.</div>
+              <div style="font-size:13px;line-height:1.45;color:#4A473F;">Arrivi da <strong>ANV</strong>, <strong>ANFM</strong> o <strong>Nikon</strong>?<br>Inserisci il tuo codice sconto.</div>
               <div style="display:flex;gap:8px;width:100%;">
                 <input type="text" placeholder="Codice sconto" value="{{ codeInput }}" onChange="{{ onCodeChange }}" onKeyDown="{{ onCodeKey }}" style="flex:1;min-width:0;font-family:inherit;font-size:14px;font-weight:600;padding:11px 14px;border:1.5px solid rgba(27,26,23,0.2);border-radius:100px;background:#FFFFFF;color:#1B1A17;text-transform:uppercase;outline:none;" style-focus="border-color:#E6592E;">
                 <button type="button" onClick="{{ applyCode }}" style="font-family:inherit;font-size:13px;font-weight:800;padding:11px 18px;border:0;border-radius:100px;background:#1B1A17;color:#F7F4EC;cursor:pointer;" style-hover="background:#3A3730;">Applica</button>
@@ -1052,7 +1052,7 @@ class Component extends DCLogic {
         return { name, id: 'logo-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-'), logo, cardBg, logoFilter, hasLogo: !!logo, noLogo: !logo };
       });
 
-    const CODES = { ANV15: 'ANV', ANFM15: 'ANFM' };
+    const CODES = { ANV15: 'ANV', ANFM15: 'ANFM', NIK15: 'Nikon' };
     const appliedCode = this.state.appliedCode || '';
     const hasDiscount = !!appliedCode;
     const discounted = Math.round(cur.price * 0.85 * 100) / 100;
