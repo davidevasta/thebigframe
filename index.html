@@ -1059,7 +1059,7 @@ class Component extends DCLogic {
         return { name, id: 'logo-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-'), logo, cardBg, logoFilter, hasLogo: !!logo, noLogo: !logo };
       });
 
-    const CODES = { ANV15: 'ANV', ANFM15: 'ANFM', NIK15: 'Nikon' };
+    const CODES = { ANV15: 'ANV', ANFM15: 'ANFM', NIK15: 'Nikon', BRAIN15: 'Brain' };
     const appliedCode = this.state.appliedCode || '';
     const hasDiscount = !!appliedCode;
     const discounted = Math.round(cur.price * 0.85 * 100) / 100;
