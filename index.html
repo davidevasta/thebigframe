@@ -75,10 +75,10 @@
     { "@type": "Person", "name": "Davide Vasta", "jobTitle": "VideoMaker e Content Creator", "url": "https://davidevasta.com" }
   ],
   "offers": [
-    { "@type": "Offer", "name": "Pass Giornata – Lancio", "price": "119.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-28T00:00:00+01:00", "validThrough": "2026-10-30T23:59:59+01:00" },
-    { "@type": "Offer", "name": "Pass Giornata – Seconda fase", "price": "149.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-31T00:00:00+01:00", "validThrough": "2026-11-02T23:59:59+01:00" },
-    { "@type": "Offer", "name": "Pass Giornata – Early Bird", "price": "197.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-03T00:00:00+01:00", "validThrough": "2026-11-17T23:59:59+01:00" },
-    { "@type": "Offer", "name": "Pass Giornata", "price": "249.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-18T00:00:00+01:00" }
+    { "@type": "Offer", "name": "Pass Giornata – Super Early Bird", "price": "129.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-28T00:00:00+01:00", "validThrough": "2026-11-01T23:59:59+01:00" },
+    { "@type": "Offer", "name": "Pass Giornata – Early Bird", "price": "149.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-02T00:00:00+01:00", "validThrough": "2026-11-08T23:59:59+01:00" },
+    { "@type": "Offer", "name": "Pass Giornata – Last Call", "price": "197.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-09T00:00:00+01:00", "validThrough": "2026-11-17T23:59:59+01:00" },
+    { "@type": "Offer", "name": "Pass Giornata – Regular", "price": "249.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-18T00:00:00+01:00" }
   ],
   "audience": { "@type": "Audience", "audienceType": "Fotografi, videomaker, creativi e brand" },
   "keywords": "fotografia, video, intelligenza artificiale, AI, videomaker, wedding film, storytelling, Nikon, Perugia, Umbria, formazione"
@@ -144,7 +144,7 @@
   <h2>Chi organizza</h2>
   <p>Davide Vasta, videomaker, formatore e content creator, fondatore di BrainStudios.</p>
   <h2>Pass</h2>
-  <p>Pass Giornata a scaglioni: €119 dal 28 al 30 ottobre 2026 (lancio, 72 ore), €149 dal 31 ottobre al 2 novembre, €197 dal 3 al 17 novembre (Early Bird), €249 dal 18 novembre. Iscrizioni aperte dal 28 ottobre 2026. Include accesso a tutta la giornata, coffee break mattina e pomeriggio, light lunch, attestato di partecipazione, dispensa di fine evento con la sintesi di ogni intervento e una sorpresa speciale a fine giornata. Posti limitati, evento a numero chiuso.</p>
+  <p>Pass Giornata a scaglioni: €129 dal 28 ottobre al 1° novembre 2026 (Super Early Bird), €149 dal 2 all’8 novembre (Early Bird), €197 dal 9 al 17 novembre (Last Call), €249 dal 18 novembre (Regular). Iscrizioni aperte dal 28 ottobre 2026. Include accesso a tutta la giornata, coffee break mattina e pomeriggio, light lunch, attestato di partecipazione, dispensa di fine evento con la sintesi di ogni intervento e una sorpresa speciale a fine giornata. Posti limitati, evento a numero chiuso.</p>
   <h2>Domande frequenti</h2>
   <h3>Cosa include il pass?</h3>
   <p>Accesso a tutta la giornata TheBigFrame, coffee break mattina e pomeriggio, light lunch, attestato di partecipazione e la dispensa di fine evento con la sintesi di ogni intervento, inviata circa 10 giorni dopo la giornata.</p>
@@ -492,9 +492,9 @@
               <button type="button" onClick="{{ resetCode }}" style="font-family:inherit;font-size:12px;font-weight:700;color:#8D897E;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;" style-hover="color:#1B1A17;">Rimuovi</button>
             </div>
           </sc-if>
-          <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{ codesActive }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;max-width:280px;">
-              <div style="font-size:13px;line-height:1.45;color:#4A473F;">Arrivi da <strong>ANV</strong>, <strong>ANFM</strong> o <strong>Nikon</strong>?<br>Inserisci il tuo codice sconto.</div>
+              <div style="font-size:13px;line-height:1.45;color:#4A473F;">Hai un codice sconto? Inseriscilo qui.</div>
               <div style="display:flex;gap:8px;width:100%;">
                 <input type="text" placeholder="Codice sconto" value="{{ codeInput }}" onChange="{{ onCodeChange }}" onKeyDown="{{ onCodeKey }}" style="flex:1;min-width:0;font-family:inherit;font-size:14px;font-weight:600;padding:11px 14px;border:1.5px solid rgba(27,26,23,0.2);border-radius:100px;background:#FFFFFF;color:#1B1A17;text-transform:uppercase;outline:none;" style-focus="border-color:#E6592E;">
                 <button type="button" onClick="{{ applyCode }}" style="font-family:inherit;font-size:13px;font-weight:800;padding:11px 18px;border:0;border-radius:100px;background:#1B1A17;color:#F7F4EC;cursor:pointer;" style-hover="background:#3A3730;">Applica</button>
@@ -503,17 +503,15 @@
                 <div style="font-size:12px;font-weight:600;color:#B33A3A;">Codice non valido</div>
               </sc-if>
             </div>
+          </sc-if>
+          <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
             <a href="{{ paypalUrl }}" target="_blank" rel="noopener" style="background:#FFC439;color:#003087;font-size:16px;font-weight:800;padding:16px 34px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;margin-top:8px;box-shadow:0 6px 16px rgba(0,48,135,0.15);white-space:nowrap;" style-hover="background:#F2B52E;">Paga con <span style="font-style:italic;"><span style="color:#003087;">Pay</span><span style="color:#009CDE;">Pal</span></span></a>
             <div style="font-size:12px;color:#8D897E;">Pagamento sicuro — anche con carta, senza account PayPal</div>
           </sc-if>
           <sc-if value="{{ isPreOpen }}" hint-placeholder-val="{{ true }}">
             <div style="background:#EFEBE0;color:#4A473F;font-size:16px;font-weight:800;padding:16px 30px;border-radius:100px;margin-top:8px;">Iscrizioni dal 28 ottobre</div>
-            <div style="font-size:12px;color:#8D897E;max-width:260px;">Il prezzo di lancio vale solo per le prime 72 ore</div>
-            <a href="https://wa.me/393405984150?text=Ciao%20Davide%2C%20avvisami%20quando%20aprono%20le%20iscrizioni%20a%20TheBigFrame%20(28%20ottobre)." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#FFFFFF;font-size:15px;font-weight:800;padding:14px 26px;border-radius:100px;margin-top:6px;box-shadow:0 6px 16px rgba(37,211,102,0.25);white-space:nowrap;" style-hover="background:#1EBE5A;">
-              <svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" fill="#FFFFFF"><path d="M16.04 3C9.37 3 3.98 8.39 3.98 15.06c0 2.23.6 4.32 1.65 6.12L3 29l8.02-2.58a12.02 12.02 0 0 0 5.02 1.1h.01c6.67 0 12.06-5.39 12.06-12.06C28.11 8.39 22.72 3 16.04 3zm0 21.85h-.01a10.03 10.03 0 0 1-5.11-1.4l-.37-.22-3.8 1.22 1.24-3.7-.24-.38a10.05 10.05 0 0 1-1.55-5.35c0-5.55 4.53-10.08 10.09-10.08 2.7 0 5.23 1.05 7.14 2.96a10.03 10.03 0 0 1 2.95 7.13c0 5.56-4.53 10.09-10.08 10.09zm5.53-7.55c-.3-.15-1.79-.88-2.07-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.23-.65.08-.3-.15-1.28-.47-2.44-1.5-.9-.8-1.51-1.79-1.69-2.09-.18-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.24-.24-.58-.49-.5-.68-.51-.18-.01-.38-.01-.58-.01-.2 0-.53.08-.8.38-.28.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.11 3.22 5.12 4.52.71.31 1.27.49 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.79-.73 2.04-1.44.25-.7.25-1.31.18-1.44-.08-.13-.28-.2-.58-.35z"/></svg>
-              Avvisami il 28
-            </a>
-            <div style="font-size:12px;color:#8D897E;max-width:260px;">Ti scrivo su WhatsApp appena aprono le iscrizioni</div>
+            <a href="https://wa.me/393405984150?text=Ciao%20Davide%2C%20avvisami%20quando%20aprono%20le%20iscrizioni%20a%20TheBigFrame%20%F0%9F%99%8C" target="_blank" rel="noopener" style="background:#25D366;color:#FFFFFF;font-size:15px;font-weight:800;padding:14px 26px;border-radius:100px;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;box-shadow:0 6px 16px rgba(37,211,102,0.25);" style-hover="background:#1EBE5A;"><svg viewBox="0 0 32 32" width="20" height="20" fill="#FFFFFF" aria-hidden="true"><path d="M16.04 3C9.37 3 3.98 8.39 3.98 15.06c0 2.23.6 4.32 1.65 6.12L3 29l8.02-2.58a12.02 12.02 0 0 0 5.02 1.1h.01c6.67 0 12.06-5.39 12.06-12.06C28.1 8.39 22.71 3 16.04 3zm7.03 17.17c-.3.83-1.73 1.6-2.4 1.66-.62.06-1.2.29-4.04-.84-3.41-1.35-5.57-4.84-5.74-5.07-.17-.22-1.38-1.83-1.38-3.5 0-1.66.87-2.48 1.18-2.82.3-.33.66-.42.88-.42l.63.01c.2.01.47-.08.74.56.3.69.99 2.38 1.07 2.55.09.17.15.37.03.6-.11.22-.17.36-.33.56-.17.19-.35.43-.5.58-.17.16-.34.34-.15.67.2.33.87 1.43 1.86 2.32 1.28 1.14 2.36 1.49 2.69 1.66.33.17.53.14.72-.08.2-.23.83-.97 1.05-1.3.22-.33.44-.28.74-.17.3.11 1.93.91 2.26 1.08.33.17.55.25.63.39.08.14.08.83-.22 1.66z"></path></svg>Avvisami il 28</a>
+            <div style="font-size:12px;color:#8D897E;max-width:260px;">Il Super Early Bird vale fino al 1° novembre</div>
           </sc-if>
           <sc-if value="{{ hasCountdown }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:14px;">
@@ -761,7 +759,7 @@
 <script type="text/x-dc" data-dc-script data-props="{
   &quot;$preview&quot;: {},
   &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#E6592E&quot;, &quot;options&quot;: [&quot;#E6592E&quot;, &quot;#D9A441&quot;, &quot;#2E6B6B&quot;, &quot;#B33A3A&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Aspetto&quot; },
-  &quot;previewPhase&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;auto&quot;, &quot;options&quot;: [&quot;auto&quot;, &quot;prelancio&quot;, &quot;119&quot;, &quot;149&quot;, &quot;197&quot;, &quot;249&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Pass&quot; },
+  &quot;previewPhase&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;auto&quot;, &quot;options&quot;: [&quot;auto&quot;, &quot;prelancio&quot;, &quot;129&quot;, &quot;149&quot;, &quot;197&quot;, &quot;249&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Pass&quot; },
   &quot;showNikonSlot&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Programma&quot; }
 }">
 const TBF_SEO_HEAD = `<title>TheBigFrame 2026 – Giornata formativa su fotografia, video e AI | 28 novembre, Perugia</title>
@@ -826,10 +824,10 @@ const TBF_SEO_HEAD = `<title>TheBigFrame 2026 – Giornata formativa su fotograf
     { "@type": "Person", "name": "Davide Vasta", "jobTitle": "VideoMaker e Content Creator", "url": "https://davidevasta.com" }
   ],
   "offers": [
-    { "@type": "Offer", "name": "Pass Giornata – Lancio", "price": "119.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-28T00:00:00+01:00", "validThrough": "2026-10-30T23:59:59+01:00" },
-    { "@type": "Offer", "name": "Pass Giornata – Seconda fase", "price": "149.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-31T00:00:00+01:00", "validThrough": "2026-11-02T23:59:59+01:00" },
-    { "@type": "Offer", "name": "Pass Giornata – Early Bird", "price": "197.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-03T00:00:00+01:00", "validThrough": "2026-11-17T23:59:59+01:00" },
-    { "@type": "Offer", "name": "Pass Giornata", "price": "249.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-18T00:00:00+01:00" }
+    { "@type": "Offer", "name": "Pass Giornata – Super Early Bird", "price": "129.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-28T00:00:00+01:00", "validThrough": "2026-11-01T23:59:59+01:00" },
+    { "@type": "Offer", "name": "Pass Giornata – Early Bird", "price": "149.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-02T00:00:00+01:00", "validThrough": "2026-11-08T23:59:59+01:00" },
+    { "@type": "Offer", "name": "Pass Giornata – Last Call", "price": "197.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-09T00:00:00+01:00", "validThrough": "2026-11-17T23:59:59+01:00" },
+    { "@type": "Offer", "name": "Pass Giornata – Regular", "price": "249.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-18T00:00:00+01:00" }
   ],
   "audience": { "@type": "Audience", "audienceType": "Fotografi, videomaker, creativi e brand" },
   "keywords": "fotografia, video, intelligenza artificiale, AI, videomaker, wedding film, storytelling, Nikon, Perugia, Umbria, formazione"
@@ -892,13 +890,13 @@ class Component extends DCLogic {
     // Scaglioni prezzo (ora italiana, CET +01:00)
     const OPEN = new Date('2026-10-28T00:00:00+01:00').getTime();
     const TIERS = [
-      { price: 119, label: 'Lancio', dates: '28–30 ottobre', end: '2026-10-31T00:00:00+01:00', phase: 'Prezzo lancio · 72 ore' },
-      { price: 149, label: 'Seconda fase', dates: '31 ottobre – 2 novembre', end: '2026-11-03T00:00:00+01:00', phase: 'Seconda fase · 72 ore' },
-      { price: 197, label: 'Early Bird', dates: '3–17 novembre', end: '2026-11-18T00:00:00+01:00', phase: 'Early Bird' },
-      { price: 249, label: 'Prezzo pieno', dates: 'Dal 18 novembre', end: '2026-11-28T09:00:00+01:00', phase: 'Pass Giornata' },
+      { price: 129, label: 'Super Early Bird', dates: '28 ottobre – 1 novembre', end: '2026-11-02T00:00:00+01:00', phase: 'Super Early Bird' },
+      { price: 149, label: 'Early Bird', dates: '2–8 novembre', end: '2026-11-09T00:00:00+01:00', phase: 'Early Bird' },
+      { price: 197, label: 'Last Call', dates: '9–17 novembre', end: '2026-11-18T00:00:00+01:00', phase: 'Last Call' },
+      { price: 249, label: 'Regular', dates: 'Dal 18 novembre', end: '2026-11-28T09:00:00+01:00', phase: 'Regular' },
     ].map(t => ({ ...t, endMs: new Date(t.end).getTime() }));
     const preview = this.props.previewPhase ?? 'auto';
-    const previewNow = { prelancio: OPEN - 86400000, '119': OPEN + 3600000, '149': TIERS[0].endMs + 3600000, '197': TIERS[1].endMs + 3600000, '249': TIERS[2].endMs + 3600000 }[preview];
+    const previewNow = { prelancio: OPEN - 86400000, '129': OPEN + 3600000, '149': TIERS[0].endMs + 3600000, '197': TIERS[1].endMs + 3600000, '249': TIERS[2].endMs + 3600000 }[preview];
     const now = previewNow ?? this.state.now;
     const isPreOpen = now < OPEN;
     let idx = TIERS.findIndex(t => now < t.endMs);
@@ -910,7 +908,7 @@ class Component extends DCLogic {
     const hasCountdown = countdownTarget > now;
     const countdownLabel = isPreOpen ? 'all\u2019apertura delle iscrizioni' : (nextTier ? 'poi il prezzo sale a \u20ac' + nextTier.price : '');
     const currentPrice = '\u20ac' + cur.price;
-    const phaseLabel = isPreOpen ? 'Prezzo lancio · dal 28 ottobre' : cur.phase;
+    const phaseLabel = isPreOpen ? 'Super Early Bird · dal 28 ottobre' : cur.phase;
     const showStrike = cur.price < 249;
     const tiers = TIERS.map((t, i) => {
       const past = !isPreOpen && i < idx;
@@ -1042,7 +1040,7 @@ class Component extends DCLogic {
 
     const sponsors = [];
     const hasSponsors = sponsors.length > 0;
-    const mediaPartners = ['Phocus Magazine', 'ANFM', 'TuttoDigitale', 'Domiad', 'Videomakers.net', 'Hobbyfoto']
+    const mediaPartners = ['Phocus Magazine', 'ANFM', 'ANV', 'TuttoDigitale', 'Domiad', 'Videomakers.net', 'Hobbyfoto', 'La Vita di un Montatore Video']
       .map(name => {
         const logos = {
           'ANFM': 'logo-anfm.png',
@@ -1051,22 +1049,25 @@ class Component extends DCLogic {
           'Domiad': 'logo-domiad.png',
           'Videomakers.net': 'logo-videomakers.png',
           'Hobbyfoto': 'logo-hobbyfoto.png',
+          'ANV': 'logo-anv.png',
+          'La Vita di un Montatore Video': 'logo-lavitadiunmontatore.png',
         };
-        const whiteLogos = ['ANFM'];
+        const whiteLogos = ['ANFM', 'La Vita di un Montatore Video'];
         const logo = logos[name] || '';
         const cardBg = '#FFFFFF';
         const logoFilter = whiteLogos.includes(name) ? 'brightness(0)' : 'none';
         return { name, id: 'logo-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-'), logo, cardBg, logoFilter, hasLogo: !!logo, noLogo: !logo };
       });
 
-    const CODES = { ANV15: 'ANV', ANFM15: 'ANFM', NIK15: 'Nikon', BRAIN15: 'Brain' };
-    const appliedCode = this.state.appliedCode || '';
+    const CODES = { ANV15: 'ANV', ANFM15: 'ANFM', NIK15: 'Nikon', BRAIN15: 'Brain', LVDUMV15: 'La Vita di un Montatore Video', HF15: 'Hobbyfoto', TD15: 'TuttoDigitale', DMD15: 'Domiad', PHOCUS15: 'Phocus Magazine', VMK15: 'Videomakers.net' };
+    const codesActive = !isPreOpen && idx >= 1;
+    const appliedCode = codesActive ? (this.state.appliedCode || '') : '';
     const hasDiscount = !!appliedCode;
     const discounted = Math.round(cur.price * 0.85 * 100) / 100;
     const fmtEur = (n) => '\u20ac' + (Number.isInteger(n) ? n : n.toFixed(2).replace('.', ','));
     const applyCode = () => {
       const c = String(this.state.codeInput || '').trim().toUpperCase();
-      if (CODES[c]) this.setState({ appliedCode: c, codeError: false });
+      if (codesActive && CODES[c]) this.setState({ appliedCode: c, codeError: false });
       else this.setState({ appliedCode: '', codeError: !!c });
     };
     const payAmount = hasDiscount ? discounted : cur.price;
@@ -1074,6 +1075,9 @@ class Component extends DCLogic {
       + '&business=' + encodeURIComponent('info@brainstudios.it')
       + '&item_name=' + encodeURIComponent('TheBigFrame 2026 - Pass Giornata' + (hasDiscount ? ' (codice ' + appliedCode + ' -15%)' : ''))
       + '&amount=' + Number(payAmount).toFixed(2)
+      + '&return=' + encodeURIComponent('https://thebigframe.it/grazie.html')
+      + '&rm=1'
+      + '&cbt=' + encodeURIComponent('Completa la tua iscrizione')
       + '&currency_code=EUR&no_shipping=1&lc=IT';
 
     return {
@@ -1090,6 +1094,7 @@ class Component extends DCLogic {
       onCodeKey: (e) => { if (e.key === 'Enter') applyCode(); },
       applyCode,
       resetCode: () => this.setState({ appliedCode: '', codeInput: '', codeError: false }),
+      codesActive,
       isOpen,
       isPreOpen,
       showStrike,
