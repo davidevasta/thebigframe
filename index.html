@@ -1,6 +1,52 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<!-- TBF analytics: Google Analytics caricato solo dopo il consenso -->
+<script>
+(function(){
+  var GA_ID='G-FJW76B9MTD', KEY='tbf_consent';
+  function load(){
+    if(window.__tbfGa) return; window.__tbfGa=true;
+    var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID; document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);};
+    gtag('js',new Date()); gtag('config',GA_ID,{anonymize_ip:true});
+  }
+  window.tbfTrack=function(name,params){ if(window.gtag && window.__tbfGa) gtag('event',name,params||{}); };
+  function banner(){
+    var b=document.createElement('div'); b.id='tbf-cookie';
+    b.setAttribute('role','dialog'); b.setAttribute('aria-label','Consenso cookie');
+    b.style.cssText="position:fixed;left:16px;bottom:16px;z-index:2147483000;max-width:380px;width:calc(100% - 32px);box-sizing:border-box;background:#1B1A17;color:#F7F4EC;border-radius:16px;padding:20px 22px;font-family:'Archivo',Arial,sans-serif;box-shadow:0 18px 44px rgba(0,0,0,0.3);";
+    b.innerHTML='<div style="font-size:15px;font-weight:800;margin-bottom:6px;">Cookie</div>'
+      +'<div style="font-size:14px;line-height:1.5;color:#D8D4C8;margin-bottom:16px;">Usiamo Google Analytics solo per contare le visite e capire da dove arrivano. Niente pubblicità.</div>'
+      +'<div style="display:flex;gap:10px;"><button type="button" data-c="no" style="flex:1;font-family:inherit;font-size:14px;font-weight:700;padding:12px;border-radius:100px;border:1.5px solid rgba(247,244,236,0.35);background:transparent;color:#F7F4EC;cursor:pointer;">Rifiuta</button>'
+      +'<button type="button" data-c="yes" style="flex:1;font-family:inherit;font-size:14px;font-weight:700;padding:12px;border-radius:100px;border:0;background:#E6592E;color:#FFFFFF;cursor:pointer;">Accetta</button></div>';
+    b.addEventListener('click',function(e){
+      var c=e.target.getAttribute&&e.target.getAttribute('data-c'); if(!c) return;
+      try{localStorage.setItem(KEY,c);}catch(_){}
+      b.remove(); if(c==='yes') load();
+    });
+    document.body.appendChild(b);
+  }
+  var saved=null; try{saved=localStorage.getItem(KEY);}catch(_){}
+  if(saved==='yes') load();
+  else if(saved!=='no'){ if(document.body) banner(); else document.addEventListener('DOMContentLoaded',banner); }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest&&e.target.closest('a,button'); if(!el) return;
+    var href=(el.getAttribute('href')||'').toLowerCase(), txt=(el.textContent||'').trim();
+    if(href.indexOf('paypal.com')>-1) tbfTrack('clic_paypal');
+    else if(href.indexOf('wa.me')>-1||href.indexOf('whatsapp')>-1) tbfTrack('clic_whatsapp');
+    else if(/avvisami/i.test(txt)) tbfTrack('clic_avvisami');
+    else if(/invia i miei dati/i.test(txt)) tbfTrack('clic_invia_modulo');
+  },true);
+  if(/grazie/.test(location.pathname)){
+    var done=false, mo=new MutationObserver(function(){
+      if(!done && document.body && document.body.textContent.indexOf('Abbiamo ricevuto i tuoi dati')>-1){ done=true; tbfTrack('iscrizione_dati_inviati'); mo.disconnect(); }
+    });
+    document.addEventListener('DOMContentLoaded',function(){ mo.observe(document.body,{childList:true,subtree:true,characterData:true}); });
+  }
+})();
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
