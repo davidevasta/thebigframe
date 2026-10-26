@@ -122,7 +122,7 @@
     { "@type": "Person", "name": "Davide Vasta", "jobTitle": "VideoMaker e Content Creator", "url": "https://davidevasta.com" }
   ],
   "offers": [
-    { "@type": "Offer", "name": "Pass Giornata – Super Early Bird", "price": "129.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-28T00:00:00+01:00", "validThrough": "2026-11-01T23:59:59+01:00" },
+    { "@type": "Offer", "name": "Pass Giornata – Super Early Bird", "price": "129.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-26T00:00:00+01:00", "validThrough": "2026-11-01T23:59:59+01:00" },
     { "@type": "Offer", "name": "Pass Giornata – Early Bird", "price": "149.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-02T00:00:00+01:00", "validThrough": "2026-11-08T23:59:59+01:00" },
     { "@type": "Offer", "name": "Pass Giornata – Last Call", "price": "197.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-09T00:00:00+01:00", "validThrough": "2026-11-17T23:59:59+01:00" },
     { "@type": "Offer", "name": "Pass Giornata – Regular", "price": "249.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-18T00:00:00+01:00" }
@@ -191,7 +191,7 @@
   <h2>Chi organizza</h2>
   <p>Davide Vasta, videomaker, formatore e content creator, fondatore di BrainStudios.</p>
   <h2>Pass</h2>
-  <p>Pass Giornata a scaglioni: €129 dal 28 ottobre al 1° novembre 2026 (Super Early Bird), €149 dal 2 all’8 novembre (Early Bird), €197 dal 9 al 17 novembre (Last Call), €249 dal 18 novembre (Regular). Iscrizioni aperte dal 28 ottobre 2026. Include accesso a tutta la giornata, coffee break mattina e pomeriggio, light lunch, attestato di partecipazione, dispensa di fine evento con la sintesi di ogni intervento e una sorpresa speciale a fine giornata. Posti limitati, evento a numero chiuso.</p>
+  <p>Pass Giornata a scaglioni: €129 fino al 1° novembre 2026 (Super Early Bird), €149 dal 2 all’8 novembre (Early Bird), €197 dal 9 al 17 novembre (Last Call), €249 dal 18 novembre (Regular). Iscrizioni aperte. Include accesso a tutta la giornata, coffee break mattina e pomeriggio, light lunch, attestato di partecipazione, dispensa di fine evento con la sintesi di ogni intervento e una sorpresa speciale a fine giornata. Posti limitati, evento a numero chiuso.</p>
   <h2>Domande frequenti</h2>
   <h3>Cosa include il pass?</h3>
   <p>Accesso a tutta la giornata TheBigFrame, coffee break mattina e pomeriggio, light lunch, attestato di partecipazione e la dispensa di fine evento con la sintesi di ogni intervento, inviata circa 10 giorni dopo la giornata.</p>
@@ -871,7 +871,7 @@ const TBF_SEO_HEAD = `<title>TheBigFrame 2026 – Giornata formativa su fotograf
     { "@type": "Person", "name": "Davide Vasta", "jobTitle": "VideoMaker e Content Creator", "url": "https://davidevasta.com" }
   ],
   "offers": [
-    { "@type": "Offer", "name": "Pass Giornata – Super Early Bird", "price": "129.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-28T00:00:00+01:00", "validThrough": "2026-11-01T23:59:59+01:00" },
+    { "@type": "Offer", "name": "Pass Giornata – Super Early Bird", "price": "129.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-10-26T00:00:00+01:00", "validThrough": "2026-11-01T23:59:59+01:00" },
     { "@type": "Offer", "name": "Pass Giornata – Early Bird", "price": "149.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-02T00:00:00+01:00", "validThrough": "2026-11-08T23:59:59+01:00" },
     { "@type": "Offer", "name": "Pass Giornata – Last Call", "price": "197.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-09T00:00:00+01:00", "validThrough": "2026-11-17T23:59:59+01:00" },
     { "@type": "Offer", "name": "Pass Giornata – Regular", "price": "249.00", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability", "validFrom": "2026-11-18T00:00:00+01:00" }
@@ -935,9 +935,9 @@ class Component extends DCLogic {
     const showNikonSlot = this.props.showNikonSlot ?? true;
 
     // Scaglioni prezzo (ora italiana, CET +01:00)
-    const OPEN = new Date('2026-10-28T00:00:00+01:00').getTime();
+    const OPEN = new Date('2026-10-26T00:00:00+01:00').getTime();
     const TIERS = [
-      { price: 129, label: 'Super Early Bird', dates: '28 ottobre – 1 novembre', end: '2026-11-02T00:00:00+01:00', phase: 'Super Early Bird' },
+      { price: 129, label: 'Super Early Bird', dates: 'Fino al 1° novembre', end: '2026-11-02T00:00:00+01:00', phase: 'Super Early Bird' },
       { price: 149, label: 'Early Bird', dates: '2–8 novembre', end: '2026-11-09T00:00:00+01:00', phase: 'Early Bird' },
       { price: 197, label: 'Last Call', dates: '9–17 novembre', end: '2026-11-18T00:00:00+01:00', phase: 'Last Call' },
       { price: 249, label: 'Regular', dates: 'Dal 18 novembre', end: '2026-11-28T09:00:00+01:00', phase: 'Regular' },
